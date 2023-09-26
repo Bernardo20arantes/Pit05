@@ -1,0 +1,264 @@
+* {
+    margin: 0px;
+    padding: 0px;
+    font-family: 'Inter', sans-serif;
+}
+
+header {
+    background-color: #D7D7D7;
+    color: #2EAD97;
+    display: grid;
+    grid-auto-columns: 1fr 2fr 1fr;
+    grid-template-areas: "Parte1 Parte2 Parte3";
+    gap: 10px;
+    height: 140px;
+}
+
+#Part1 {
+    grid-area: Parte1;
+    height: 140px;
+}
+
+#LogoTipo {
+    display: flex;
+    font-weight: bold;
+    font-size: 20px;
+    width: 100%;
+    margin-top: 80px;
+    margin-left: 10px;
+}
+
+#Lado {
+    transform: rotate(45deg);
+    position: absolute;
+    margin-left: 230px;
+    margin-top: 4px;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+#Pesquisa {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    grid-area: Parte2;
+    height: 140px;
+}
+
+#BarraPesquisa {
+    width: 80%;
+    border-radius: 30px;
+    height: 20px;
+    margin-left: 8%;
+    padding: 20px;
+    border: none;
+}
+
+#Lupa {
+    width: 40px;
+    height: 40px;
+}
+
+#Voltar {
+    background: transparent;
+    border: none;
+    color: #2EAD97;
+    font-size: 25px;
+    font-weight: bold;
+    margin-left: 10%;
+    margin-top: 10%;
+}
+
+main {
+    background-color: #A5A3A3;
+    height: 1400px;
+    color: white;
+    font-weight: bold;
+}
+
+#Form {
+    width: 600px;
+    height: 700px;
+    margin-left: 33%;
+    display: grid;
+    grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+    justify-items: center;
+}
+
+#ImgAvatar {
+    width: 180px;
+    height: 150px;
+    margin-left: 20%;
+}
+
+#Acessar {
+    margin-left: 10%;
+    margin-bottom: 4%;
+    width: 300px;
+}
+
+.SubContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    gap: 20px;
+}
+
+.SubContainer input {
+    width: 80%;
+    border-radius: 30px;
+    padding: 6px;
+    border: none;
+}
+#ContainerMiligramas{
+    margin-top: 10px;
+    margin-bottom: 10px;
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    text-align: center;
+    width: 300px;
+}
+#ContainerMiligramas p{
+    margin-bottom: 10px;
+}
+#Miligramas{
+    padding: 14px;
+    border: none;
+    width: 60%;
+    border-radius: 30px;
+    margin-left: 12%;
+}
+#ContainerQuantidade{
+    display: flex;
+    align-items: center;
+    text-align: center;
+}
+#ContainerQuantidade p{
+    margin-bottom: 10px;
+}
+.Quantidade{
+    padding: 14px;
+    border: none;
+    width: 60%;
+    gap: 20px;
+    border-radius: 30px;
+}
+#PerguntaTipoMEDICAMENTO {
+    margin-left: 30%;
+    margin-bottom: 10px;
+}
+
+input[type="radio"] {
+    position: absolute;
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+input[type="radio"]+label {
+    display: inline-block;
+    padding: 6px 12px;
+    margin: 4px 50px;
+    background-color: #6AC88A;
+    color: #333;
+    border: 1px solid #ccc;
+    border-radius: 20px;
+    cursor: pointer;
+}
+
+input[type="radio"]:checked+label {
+    background-color: #239682;
+    color: #fff;
+}
+#HoraMedicamento{
+    text-align: center;
+    margin-bottom: 10px;
+}
+#HoraRemedio{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-content: center;
+    margin-bottom: 20px;
+}
+#HoraComeco{
+    width: 12%;
+    background-color: #6AC88A;
+    color: #fff;
+    font-weight: bold;
+}
+#BtnCadastro {
+    color: white;
+    background-color: #6AC88A;
+    border: none;
+    font-size: 20px;
+    border-radius: 30px;
+    padding: 10px;
+}
+
+footer {
+    display: flex;
+    align-items: center;
+    height: 100px;
+}
+
+#Links ul {
+    display: flex;
+    list-style-type: none;
+    padding: 0;
+}
+
+#Links li {
+    margin-right: 40px;
+    margin-left: 10px;
+}
+
+#Links a {
+    text-decoration: underline #7B6C6C;
+    color: #7B6C6C;
+    background-color: #FFFFFF;
+}
+
+
+#IconsFoot {
+    display: flex;
+    margin-left: auto;
+    align-items: flex-start;
+}
+
+#ImgFoot {
+    display: grid;
+    width: 200px;
+    grid-template-rows: 0.4fr 0.4fr;
+    grid-template-columns: 0.4fr 0.4fr;
+    grid-template-areas:
+        "Twitter TikTok"
+        "Pinterest Insta";
+    grid-gap: 5px;
+}
+
+#IconInsta {
+    width: 50px;
+    height: 40px;
+    grid-area: Insta;
+}
+
+#IconTikTok {
+    width: 46px;
+    height: 40px;
+    grid-area: TikTok;
+}
+
+#IconPinterest {
+    width: 60px;
+    height: 40px;
+    grid-area: Pinterest;
+}
+
+#IconTwitter {
+    width: 60px;
+    height: 40px;
+    grid-area: Twitter;
+}

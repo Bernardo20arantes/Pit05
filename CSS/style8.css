@@ -1,0 +1,181 @@
+* {
+    margin: 0px;
+    padding: 0px;
+    font-family: 'Inter', sans-serif;
+}
+
+header {
+    background-color: #D7D7D7;
+    color: #2EAD97;
+    display: grid;
+    grid-auto-columns: 1fr 2fr 1fr;
+    grid-template-areas: "Parte1 Parte2 Parte3";
+    gap: 10px;
+    height: 140px;
+}
+
+#Part1 {
+    grid-area: Parte1;
+    height: 140px;
+}
+
+#LogoTipo {
+    display: flex;
+    font-weight: bold;
+    font-size: 20px;
+    width: 100%;
+    margin-top: 80px;
+    margin-left: 10px;
+}
+
+#Lado {
+    transform: rotate(45deg);
+    position: absolute;
+    margin-left: 230px;
+    margin-top: 4px;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+
+#Pesquisa {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    grid-area: Parte2;
+    height: 140px;
+}
+
+#BarraPesquisa {
+    width: 80%;
+    border-radius: 30px;
+    height: 20px;
+    margin-left: 8%;
+    padding: 20px;
+    border: none;
+}
+
+#Lupa {
+    width: 60px;
+    height: 60px;
+}
+
+#Voltar {
+    background: transparent;
+    border: none;
+    color: #2EAD97;
+    font-size: 25px;
+    font-weight: bold;
+    margin-left: 10%;
+    margin-top: 10%;
+}
+
+main {
+    background-color: #A5A3A3;
+    display: flex;
+    flex-direction: column;
+    gap: 2%;
+    width: 100%;
+    height: 600px;
+}
+#Form{
+    display: flex;
+    flex-direction: column;
+    width: 30%;
+    margin-left: 36%;
+    justify-content: center;
+    align-items: center;
+    margin-top: 8%;
+    margin-bottom: 30px;
+    gap: 20px;
+}
+#Form input{
+    border-radius: 10px;
+    padding: 4px;
+    width: 60%;
+}
+#Aviso{
+    color: red;
+    text-align: center;
+    width: 80%;
+    font-weight: bold;
+    font-size: 20px;       
+}
+#Info p{
+    font-size: 20px;
+}
+.lblInfo{
+    font-size: 20px;
+}
+#BtnConfirmar input{
+    border: none;
+    background-color: #2EAD97;
+    color: #FFFFFF;
+    padding: 10px;
+    width: 100%;    
+    font-weight: bold;
+    font-size: 16px;    
+}
+footer {
+    display: flex;
+    align-items: center;
+    height: 100px;
+}
+
+#Links ul {
+    display: flex;
+    list-style-type: none;
+    padding: 0;
+}
+
+#Links li {
+    margin-right: 40px;
+    margin-left: 10px;
+}
+
+#Links a {
+    text-decoration: underline #7B6C6C;
+    color: #7B6C6C;
+    background-color: #FFFFFF;
+}
+
+#IconsFoot {
+    display: flex;
+    margin-left: auto;
+    align-items: flex-start;
+}
+
+#ImgFoot {
+    display: grid;
+    width: 200px;
+    grid-template-rows: 0.4fr 0.4fr;
+    grid-template-columns: 0.4fr 0.4fr;
+    grid-template-areas:
+        "Twitter TikTok"
+        "Pinterest Insta";
+    grid-gap: 5px;
+}
+
+#IconInsta {
+    width: 50px;
+    height: 40px;
+    grid-area: Insta;
+}
+
+#IconTikTok {
+    width: 46px;
+    height: 40px;
+    grid-area: TikTok;
+}
+
+#IconPinterest {
+    width: 60px;
+    height: 40px;
+    grid-area: Pinterest;
+}
+
+#IconTwitter {
+    width: 60px;
+    height: 40px;
+    grid-area: Twitter;
+}

@@ -1,0 +1,327 @@
+* {
+    margin: 0px;
+    padding: 0px;
+    font-family: 'Inter', sans-serif;
+}
+
+header {
+    background-color: #D7D7D7;
+    color: #2EAD97;
+    display: grid;
+    grid-auto-columns: 1fr 2fr 1fr;
+    grid-template-areas: "Parte1 Parte2 Parte3";
+    gap: 10px;
+    height: 140px;
+}
+
+#Part1 {
+    grid-area: Parte1;
+    height: 140px;
+}
+
+#LogoTipo {
+    display: flex;
+    font-weight: bold;
+    font-size: 20px;
+    width: 100%;
+    margin-top: 80px;
+    margin-left: 10px;
+}
+
+#Lado {
+    transform: rotate(45deg);
+    position: absolute;
+    margin-left: 230px;
+    margin-top: 4px;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+#Pesquisa {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    grid-area: Parte2;
+    height: 140px;
+}
+
+#BarraPesquisa {
+    width: 80%;
+    border-radius: 30px;
+    height: 20px;
+    margin-left: 8%;
+    padding: 20px;
+    border: none;
+}
+
+#Lupa {
+    width: 40px;
+    height: 40px;
+}
+#Voltar{
+    background: transparent;
+    border: none;
+    color: #2EAD97;
+    font-size: 25px;
+    font-weight: bold;
+    margin-left: 10%;
+    margin-top: 10%;
+}
+
+#ImgMenu {
+    width: 80px;
+    height: 80px;
+    margin-left: 4px;
+    margin-top: 10px;
+}
+
+#Menu:hover {
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+    background-color: #f2f2f2;
+    transform: scale(1.0);
+    border: solid;
+    height: 135px;
+}
+
+main {
+    background-color: #A8A8A8;
+    height: 800px;
+    display: grid;
+    grid-template-rows: 1fr 2fr 1fr 1fr;
+    grid-template-areas: "Part1"
+        "Part2"
+        "Part3"
+        "Parte4";
+}
+
+#Avatar {
+    grid-area: Part1;
+    margin-left: 42%;
+}
+
+#Avatar>h2 {
+    margin-left: 80px;
+}
+
+#ImgAvatar {
+    width: 250px;
+    height: 200px;
+}
+
+#Informacoes {
+    grid-area: Part2;
+    width: 40%;
+    margin-left: 30%;
+}
+
+#ImgEmail {
+    width: 100px;
+}
+
+#ImgSenha {
+    width: 100px;
+}
+
+.Info {
+    display: flex;
+    align-items: center;
+}
+
+.Imputs {
+    width: 100%;
+    border-radius: 30px;
+    padding: 8px;
+    border: none;
+}
+
+#Entrar {
+    grid-area: Part3;
+    margin: 10px;
+    margin-left: 30%;
+    margin-top: 2%;
+}
+
+#BtnEntrar {
+    border: none;
+    background-color: #2EAD97;
+    color: #FFFFFF;
+    border-radius: 30px;
+    width: 22%;
+    padding: 10px;
+    margin-left: 18%;
+    font-weight: bold;
+}
+
+#Cad_Rec {
+    grid-area: Part4;
+    margin: 10px;
+    margin-left: 32%;
+    margin-top: 2%;
+    display: flex;
+    gap: 6%;
+}
+
+.subImput {
+    border: none;
+    background-color: #2EAD97;
+    color: #FFFFFF;
+    border-radius: 30px;
+    width: 20%;
+    padding: 10px;
+    font-weight: bold;
+}
+
+footer {
+    display: flex;
+    align-items: center;
+    height: 100px;
+}
+
+#Links ul {
+    display: flex;
+    list-style-type: none;
+    padding: 0;
+}
+
+#Links li {
+    margin-right: 40px;
+    margin-left: 10px;
+}
+
+#Links a {
+    text-decoration: underline #7B6C6C;
+    color: #7B6C6C;
+    background-color: #FFFFFF;
+}
+
+#IconsFoot {
+    display: flex;
+    margin-left: auto;
+    align-items: flex-start;
+}
+
+#ImgFoot {
+    display: grid;
+    width: 200px;
+    grid-template-rows: 0.4fr 0.4fr;
+    grid-template-columns: 0.4fr 0.4fr;
+    grid-template-areas:
+        "Twitter TikTok"
+        "Pinterest Insta";
+    grid-gap: 5px;
+}
+
+#IconInsta {
+    width: 50px;
+    height: 40px;
+    grid-area: Insta;
+}
+
+#IconTikTok {
+    width: 46px;
+    height: 40px;
+    grid-area: TikTok;
+}
+
+#IconPinterest {
+    width: 60px;
+    height: 40px;
+    grid-area: Pinterest;
+}
+
+#IconTwitter {
+    width: 60px;
+    height: 40px;
+    grid-area: Twitter;
+}
+@media (max-width: 600px) {
+    header {
+        width: 600px;
+        grid-template-areas: "Parte1 Parte2 Parte3";
+        grid-template-columns: 0.5fr 1fr 0.5fr;
+        grid-template-rows: auto auto auto;
+    }
+
+    #ImgAvatar {
+        width: 150px;
+        height: 100px;
+    }
+    #Voltar{
+        margin: 0;
+    }
+    #Part1 {
+        grid-area: Parte1;
+        height: auto;
+        margin-bottom: 10px;
+    }
+
+    #Imagens {
+        display: none;
+    }
+
+    #LogoTipo {
+        justify-content: center;
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
+
+    #Lado {
+        display: none;
+    }
+
+    #Pesquisa {
+        grid-area: Parte2;
+        justify-content: center;
+    }
+
+    #BarraPesquisa {
+        width: 60%;
+    }
+
+    #Lupa {
+        margin-left: 10px;
+    }
+
+    main {
+        width: 600px;
+    }
+
+    footer {
+        width: 600px;
+        display: flex;
+    }
+
+    #IconsFoot {
+        width: 30%;
+        margin-left: 0;
+    }
+
+    #IconInsta {
+        width: 30px;
+        height: 20px;
+    }
+
+    #IconTikTok {
+        width: 50px;
+        height: 20px;
+    }
+
+    #IconPinterest {
+        width: 40px;
+        height: 20px;
+    }
+
+    #IconTwitter {
+        width: 40px;
+        height: 20px;
+    }
+    #Links{
+        width: 60%;
+    }
+
+    #Links li {
+        margin-right: 20px;
+        margin-left: 0;
+        background-color: #DCDCDC;
+    }
+}
