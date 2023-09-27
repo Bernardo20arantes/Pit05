@@ -77,15 +77,16 @@ main {
     gap: 2%;
     width: 100%;
     align-items: center;
+    height: 700px;
 }
 #Form{
     display: flex;
     flex-direction: column;
-    width: 400px;
+    width: 500px;
     align-items: center;
     margin-bottom: 10px;
     gap: 16px;
-    margin-top: 10px;
+    margin-top: 4%;
 }
 #Form h1{
     font-size: 40px;    
@@ -100,11 +101,11 @@ main {
     border: none;
     padding: 6px;
     border-radius: 10px;
-    margin-left: -6%;
-    width: 160%;
+    margin-left: -2%;
+    width: 180%;
 }
 #InputData{
-    width: 220%;
+    width: 240%;
 }
 .SubContainer p{
     font-size: 16px;
