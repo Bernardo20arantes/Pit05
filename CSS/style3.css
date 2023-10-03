@@ -188,7 +188,34 @@ main {
 #IdosaRemedio {
     width: 600px;
 }
-
+#ContainerP5{
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+}
+.SubContainer input{
+    width: 100%;
+    border-radius: 10px;
+    padding: 6px;
+    border:  none;
+    margin-left: -10%;
+}
+.SubContainer textarea{
+    border: none;
+    margin-bottom: 10px;
+}
+#FormDuv{
+    width: 40%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+#BtnEnviar{
+    border: none;
+    background-color: #2EAD97;
+    color: #FFFFFF;
+    padding: 8px;
+}
 footer {
     display: flex;
     align-items: center;
