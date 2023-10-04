@@ -174,7 +174,6 @@ main {
     text-align: center;
     margin-top: 20px;
     padding: 5%;
-    color: #E8CECE;
 }
 
 #Barracinza {
@@ -182,7 +181,7 @@ main {
     height: 450px;
     margin-left: 30%;
     margin-bottom: 10px;
-    background-color: #385D69;
+    text-align: justify;
 }
 
 #IdosaRemedio {
@@ -194,15 +193,20 @@ main {
     justify-content: space-around;
 }
 .SubContainer input{
-    width: 100%;
-    border-radius: 10px;
+    width: 90%;
     padding: 6px;
     border:  none;
-    margin-left: -10%;
 }
 .SubContainer textarea{
     border: none;
     margin-bottom: 10px;
+    width: 93.4%;
+}
+.SubContainer{
+    width: 300px;
+    display: flex;
+    justify-content: left;
+    flex-direction: column;
 }
 #FormDuv{
     width: 40%;
@@ -214,7 +218,51 @@ main {
     border: none;
     background-color: #2EAD97;
     color: #FFFFFF;
-    padding: 8px;
+    padding: 10px;
+    border-radius: 10px;
+    font-size: 20px;
+    font-weight: bold;
+}
+#ContainerP6{
+    display: flex;
+    width: 100%;
+    height: 300px;
+    background-color: #EDEDED;
+    color: #5F5252;
+}
+#Barra01{
+    background-color: #D9D9D9;
+}
+#Barra02{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+    grid-template-areas: "GridP1 GridP1"
+    "GridP2 GridImg"
+    "GridBtn GridImg";
+}
+#GridP1{
+    
+    grid-area: GridP1;
+}
+#GridP2{
+    grid-area: GridP2;
+}
+#GridImg{
+    grid-area: GridImg;
+    width: 260px;
+    margin-top: -38px;
+}
+#GridBtn{
+    grid-area: GridBtn;
+    border: none;
+    background-color: #5F5252;
+    color: #FFFFFF;
+    width: 40%;
+    height: 56px;
+    font-size: 20px;
+    margin-left: 40%;
+    font-weight: bold;
 }
 footer {
     display: flex;
