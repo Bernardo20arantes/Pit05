@@ -1,3 +1,20 @@
+<?php
+if(isset($_POST["AltRemedio"])){
+    header("Location: AlterarRemedio.php");
+}
+if(isset($_POST["CadRemedio"])){
+    header("Location: CadastroRemedio.php");
+}
+if(isset($_POST["CadAliado"])){
+    header("Location: CadastroAliado.php");
+}
+if(isset($_POST["AltAliado"])){
+    header("Location: AlterarAliado.php");
+}
+if(isset($_POST["Voltar"])){
+    header("Location: home.php");
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -56,6 +73,21 @@
             <form method="post" class="Form">
                 <div>
                     <h3>Aliado- Alterar</h3>
+                </div>
+                <div>
+                    <input type="submit" value="Alterar">
+                    <input type="submit" value="Deletar">
+                </div>
+            </form>
+        </div>
+        <div id="Formulario2">
+            <form method="post" class="Form">
+                <h3>Consultas - Cadastrar</h3>
+                <input type="submit" value="Cadastrar">
+            </form>
+            <form method="post" class="Form">
+                <div>
+                    <h3>Consultas- Alterar</h3>
                 </div>
                 <div>
                     <input type="submit" value="Alterar">

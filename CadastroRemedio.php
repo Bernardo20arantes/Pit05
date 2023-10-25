@@ -1,3 +1,8 @@
+<?php
+if(isset($_POST["Voltar"])){
+    header("Location: menu.php");
+}
+?>
 <!DOCTYPE html>
 <html lang="pt-br">
 
@@ -26,7 +31,7 @@
             <img id="Lupa" src="IMG/LupaPesquisa.png">
         </div>
         <form method="post">
-            <input type="submit" id="Voltar" value="Voltar">
+            <input type="submit" id="Voltar" name="Voltar" value="Voltar">
         </form>
     </header>
 
@@ -42,6 +47,8 @@
                 <br>
             </div>
             <div>
+            <p style="text-align: center;font-size: 20px; margin-bottom: 10px;">
+            O Remédio é Manipulado ou não?</p>
                 <input type="radio" name="tipoManipulado" id="manipulado">
                 <label for="manipulado">Manipulado</label>
                 <input type="radio" name="tipoManipulado" id="n_manipulado">

@@ -3,7 +3,7 @@
 $servidor ="localhost";
 $usuario = "root";
 $senha = "";
-$dbname = "formulario-santosh";
+$dbname = "bd_mediquese";
 
 $conexao = mysqli_connect($servidor,$usuario,$senha,$dbname);
 
