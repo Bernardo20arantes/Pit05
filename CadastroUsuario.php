@@ -1,3 +1,27 @@
+<?php 
+
+include_once("PDO/pdo.php");
+
+if(isset($_POST['submit'])){
+    
+  
+    $nome = $_POST['nome'];
+    $cpf = $_POST['CPF'];
+    $cep = $_POST['cep'];
+    $info = $_POST['info'];
+    $email = $_POST['email'];
+    $senha = $_POST['senha'];
+    $telefone = $_POST['telefone'];
+    $sexo = $_POST['genero'];
+    $data_nasc = $_POST['data_nasc'];
+    
+    $result = mysqli_query($conexao, "INSERT INTO usuarios(nome, email, senha, telefone, sexo, data_nasc, cpf, cep, info) VALUES ('$nome', '$email', '$senha', '$telefone', '$sexo', '$data_nasc', '$cpf', '$cep', '$info')");
+
+}
+
+?>
+
+
 <!DOCTYPE html>
 <html lang="pt-br">
 
@@ -26,20 +50,20 @@
             <input type="search" name="" id="BarraPesquisa">
             <img id="Lupa" src="IMG/LupaPesquisa.png">
         </div>
-        <form method="post">
+        <form action="index.html" method="post">
             <input type="submit" id="Voltar" name="Voltar" value="Voltar">
         </form>
     </header>
 
     <main>
-        <form method="post" id="Form">
+        <form action="CadastroUsuario.php" method="post" id="Form">
             <div>
                 <img src="IMG/Perfil_Usuario.png" id="ImgAvatar">
                 <h2 id="Acessar">CADASTRAR USÚARIO</h2>
             </div>
             <div class="SubContainer">
                 <p>Nome Completo:</p>
-                <input type="text" name="" id="Nome">
+                <input type="text" name="nome" id="Nome">
                 <p></p>
             </div>
             <div id="ParteInformacoes">
@@ -61,46 +85,46 @@
                     <p></p>
                 </div>
                 <div id="InfotxtDTN">
-                    <input type="date" name="Data" id="Data">
+                    <input type="date" name="data_nasc" id="Data">
                     <p></p>
                 </div>
                 <div id="InfotxtCell">
-                    <input type="text" name="Celular" id="Cell" oninput="mascara_Cell()" maxlength="14">
+                    <input type="text" name="telefone" id="Cell" oninput="mascara_Cell()" maxlength="14">
                     <p></p>
                 </div>
             </div>
             <div class="SubContainer">
                 <p>Cep:</p>
-                <input type="text" name="" id="cep" oninput="mascara_cep()" maxlength="9">
+                <input type="text" name="cep" id="cep" oninput="mascara_cep()" maxlength="9">
                 <p></p>
             </div>
             <div>
-                <p>Nos conte o que você tem: </p>
-                <textarea name="" id="" cols="70" rows="2"
+                <p>Por favor, forneça informações sobre sua condição médica atual e os motivos pelos quais você está tomando medicamentos. </p>
+                <textarea name="info" id="info" cols="70" rows="2"
                     style="resize: none; border-radius: 10px; width: 96%; margin-left: 2%;"></textarea>
             </div>
             <div>
                 <p id="PerguntaPronome">Como podemos te chamar:</p>
                 <div>
-                    <input type="radio" name="pronome" id="ele">
+                    <input type="radio" name="genero" id="ele" value = "masculino">
                     <label for="ele">Ele</label>
-                    <input type="radio" name="pronome" id="ela">
+                    <input type="radio" name="genero" id="ela" value="feminino">
                     <label for="ela">Ela</label>
                     <p></p>
                 </div>
             </div>
             <div class="SubContainer">
                 <p>E-mail:</p>
-                <input type="text" name="" id="Email">
+                <input type="text" name="email" id="Email">
                 <p></p>
             </div>
             <div class="SubContainer">
                 <p>Senha:</p>
-                <input type="text" name="" id="">
+                <input type="password" name="senha" id="">
                 <p></p>
             </div>
             <div>
-                <input type="submit" value="Cadastrar" id="BtnCadastro">
+                <input type="submit" name="submit" value="Cadastrar" id="BtnCadastro">
             </div>
         </form>
     </main>

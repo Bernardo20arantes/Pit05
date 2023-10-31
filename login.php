@@ -1,3 +1,15 @@
+<?php 
+if(isset($_POST['Voltar'])){
+    
+    header('Location:index.html');
+}
+
+if(isset($_POST['Cadastrar'])){
+    header('Location:CadastroUsuario.php');
+}
+
+?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
 
@@ -25,13 +37,13 @@
             <input type="search" name="" id="BarraPesquisa">
             <img id="Lupa" src="IMG/LupaPesquisa.png">
         </div>
-        <form method="post">
+        <form method="post" action="login.php">
             <input type="submit" id="Voltar" name="Voltar" value="Voltar">
         </form>
     </header>
 
     <main>
-        <form method="POST">
+        <form method="post" action="testLogin.php">
             <div id="Avatar">
                 <img id="ImgAvatar" src="IMG/Perfil_Usuario.png">
                 <h2>Acessar</h2>
@@ -41,15 +53,15 @@
                     <img id="ImgEmail" src="IMG/RemedioEmail.png">
                     <h3>E-mail</h3>
                 </div>
-                <input type="text" name="" class="Imputs">
+                <input type="text" name="email" class="Imputs">
                 <div class="Info">
                     <img id="ImgSenha" src="IMG/RemedioSenha.png">
                     <h3>Senha</h3>
                 </div>
-                <input type="password" name="" class="Imputs">
+                <input type="password" name="senha" class="Imputs">
             </div>
             <div id="Entrar">
-                <input type="submit" name="Entrar" value="Entrar" id="BtnEntrar">
+                <input type="submit" name="entrar" value="Entrar" id="BtnEntrar">
             </div>
             <div id="Cad_Rec">
                 <input type="submit" name="Cadastrar" value="Cadastrar" class="subImput">

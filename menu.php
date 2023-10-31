@@ -14,7 +14,63 @@ if(isset($_POST["AltAliado"])){
 if(isset($_POST["Voltar"])){
     header("Location: home.php");
 }
+
+
+session_start();
+include_once('PDO/pdo.php');
+//print_r($_SESSION);
+
+if((!isset($_SESSION['email']) == true) and (!isset($_SESSION['senha']) == true)){
+
+     unset($_SESSION['email']);
+     unset($_SESSION['senha']);
+     header('Locations: login.php');
+}
+
+$logado = $_SESSION['email']; 
+
+
+$sql = "SELECT * FROM usuarios  WHERE email = '" . $logado . "' ORDER BY id DESC";
+
+$result = $conexao->query($sql);
+
+//print_r($result);
+
+///////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////
+if(!empty($_GET['id'])){
+    include_once("config.php");
+
+    $id = $_GET['id'];
+
+    $sqlSelect = "SELECT * FROM usuarios WHERE id=$id";
+
+    $result = $conexao->query($sqlSelect);
+
+    if($result->num_rows > 0){
+
+        while($user_data = mysqli_fetch_assoc($result)){
+
+        $nome = $user_data['nome'];
+        $cpf = $user_data['cpf'];
+        $cep = $user_data['cep'];
+        $info = $user_data['info'];
+        $email = $user_data['email'];
+        $senha = $user_data['senha'];
+        $telefone = $user_data['telefone'];
+        $sexo = $user_data['sexo'];
+        $data_nasc = $user_data['data_nasc'];
+       
+        }
+    }
+    else{
+        header('Location: home.php');
+    }
+
+}
+
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -42,13 +98,13 @@ if(isset($_POST["Voltar"])){
             <img id="Lupa" src="IMG/LupaPesquisa.png">
         </div>
         <form method="post">
-            <input type="submit" id="Voltar" value="Voltar">
+            <input type="submit" name="Voltar" id="Voltar" value="Voltar">
         </form>
     </header>
     <main>
         <div id="Usuario">
             <img src="IMG/Perfil_Usuario.png" id="ImgUsuario">
-            <p>Usuário</p>
+           <p><?php echo $logado ?></p>
         </div>
         <div id="Formulario">
             <form method="post" class="Form">
@@ -101,7 +157,7 @@ if(isset($_POST["Voltar"])){
                 <form method="post" id="Form">
                     <div class="SubContainer">
                         <p>Nome Completo:</p>
-                        <input type="text" name="" id="Nome">
+                        <input type="text" name="nome" id="Nome" value="<?php echo $nome?>">
                         <p></p>
                     </div>
                     <div id="ParteInformacoes">
@@ -119,46 +175,46 @@ if(isset($_POST["Voltar"])){
                             <img src="IMG/Celular.png" id="ImgCell">
                         </div>
                         <div id="InfotxtCpf">
-                            <input type="text" name="CPF" id="Cpf" oninput="mascara_CPF()" maxlength="14">
+                            <input type="text" name="CPF" id="Cpf" value="<?php echo $cpf?>" oninput="mascara_CPF()" maxlength="14">
                             <p></p>
                         </div>
                         <div id="InfotxtDTN">
-                            <input type="date" name="Data" id="Data">
+                            <input type="date" name="data_nasc" id="Data" value="<?php echo $data_nasc?>">
                             <p></p>
                         </div>
                         <div id="InfotxtCell">
-                            <input type="text" name="Celular" id="Cell" oninput="mascara_Cell()" maxlength="14">
+                            <input type="text" name="telefone" id="Cell" value="<?php echo $telefone?>" oninput="mascara_Cell()" maxlength="14">
                             <p></p>
                         </div>
                     </div>
                     <div class="SubContainer">
                         <p>Cep:</p>
-                        <input type="text" name="" id="cep" oninput="mascara_cep()" maxlength="9">
+                        <input type="text" name="" id="cep" value="<?php echo $cep?>" oninput="mascara_cep()" maxlength="9">
                         <p></p>
                     </div>
                     <div>
                         <p>Nos conte o que você tem: </p>
-                        <textarea name="" id="" cols="70" rows="2"
+                        <textarea name="info" id="info" value="<?php echo $info?>" cols="70" rows="2"
                             style="resize: none; border-radius: 10px; width: 96%; margin-left: 2%;"></textarea>
                     </div>
                     <div>
                         <p id="PerguntaPronome">Como podemos te chamar:</p>
                         <div>
-                            <input type="radio" name="pronome" id="ele">
+                            <input type="radio" name="genero" id="ele" value="masculino" <?php echo ($sexo == 'masculino') ? 'checked' : '' ?>>
                             <label for="ele">Ele</label>
-                            <input type="radio" name="pronome" id="ela">
+                            <input type="radio" name="genero" id="ela" value="feminino" <?php echo ($sexo == 'masculino') ? 'checked' : '' ?>>
                             <label for="ela">Ela</label>
                             <p></p>
                         </div>
                     </div>
                     <div class="SubContainer">
                         <p>E-mail:</p>
-                        <input type="text" name="" id="Email">
+                        <input type="text" name="email" id="Email" value="<?php echo $email?>">
                         <p></p>
                     </div>
                     <div class="SubContainer">
                         <p>Senha:</p>
-                        <input type="text" name="" id="">
+                        <input type="text" name="senha" id="senha" value="<?php echo $senha?>">
                         <p></p>
                     </div>
                     <div>
@@ -173,7 +229,7 @@ if(isset($_POST["Voltar"])){
         <div id="Links">
             <ul>
                 <a href="">
-                    <li>Nós Conheça +</li>
+                    <li>Nos Conheça +</li>
                 </a>
                 <a href="">
                     <li>Termos de uso +</li>
