@@ -2,6 +2,27 @@
 if(isset($_POST["Voltar"])){
     header("Location: menu.php");
 }
+
+
+include_once("PDO/pdo.php");
+
+if(isset($_POST['cadMed'])){
+
+    $id_usuario = $_POST['idUsuario'];
+    $apelido = $_POST['apelido'];
+    $tipoMan = $_POST['tipoMan'];
+    $dosagem = $_POST['dosagem'];
+    $tipoGen = $_POST['tipoGen'];
+    $nomeMedicamento = $_POST['NomeMedicamento'];
+    $caixas = $_POST['caixas'];
+    $comprimidos = $_POST['comprimidos'];
+    $efeitos = $_POST['efeito'];
+    $farmaceutica = $_POST['farmaceutica'];
+    $frequencia = $_POST['frequencia'];
+    $horario = $_POST['horario'];
+
+    $result = mysqli_query($conexao, "INSERT INTO medicamentos(id_usuario, apelido, tipoMan, dosagem, tipoGen, nome, caixas, comprimidos, efeito, farmaceutica, frequencia, horario) VALUES('$id_usuario','$apelido', '$tipoMan', '$dosagem', '$tipoGen', '$nomeMedicamento', '$caixas', '$comprimidos', '$efeitos', '$farmaceutica', '$frequencia', '$horario')");
+}
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -36,37 +57,42 @@ if(isset($_POST["Voltar"])){
     </header>
 
     <main>
-        <form method="post" id="Form">
+        <form method="post" action="CadastroRemedio.php" id="Form">
             <div>
                 <img src="IMG/RemedioCadastro.png" id="ImgAvatar">
-                <h2 id="Acessar">Cadastrar Remedios</h2>
+                <h2 id="Acessar">Cadastrar Medicamento</h2>
+            </div>
+            <div class="SubContainer">
+                <p>CÓDIGO DO USUÁRIO:</p>
+                <input type="number" name="idUsuario" id="ApelidoMedicamento">
+                <br>
             </div>
             <div class="SubContainer">
                 <p>APELIDO DO MEDICAMENTO:</p>
-                <input type="text" name="ApelidoMedicamento" id="ApelidoMedicamento">
+                <input type="text" name="apelido" id="ApelidoMedicamento">
                 <br>
             </div>
             <div>
             <p style="text-align: center;font-size: 20px; margin-bottom: 10px;">
             O Remédio é Manipulado ou não?</p>
-                <input type="radio" name="tipoManipulado" id="manipulado">
+                <input type="radio" name="tipoMan" id="manipulado" value="manipulado">
                 <label for="manipulado">Manipulado</label>
-                <input type="radio" name="tipoManipulado" id="n_manipulado">
+                <input type="radio" name="tipoMan" id="n_manipulado" value="naoManipulado">
                 <label for="n_manipulado">Não manipulado</label>
                 <p></p>
             </div>
             <div id="ContainerMiligramas">
                 <p>MILIGRAMAS DO MEDICAMENTO:</p>
-                <input type="text" name="MILIGRAMAS" id="Miligramas">
+                <input type="text" name="dosagem" id="Miligramas">
                 <br>
             </div>
             <div>
                 <p id="PerguntaTipoMEDICAMENTO">Tipo do Medicamento:</p>
                 <div>
-                    <input type="radio" name="Medicamento" id="generico">
-                    <label for="generico">GENÉRICO</label>
-                    <input type="radio" name="Medicamento" id="Original">
-                    <label for="Original">Original</label>
+                    <input type="radio" name="tipoGen" id="tipoGenerico" value="generico">
+                    <label for="tipogGenerico">Genérico</label>
+                    <input type="radio" name="tipoGen" id="tipoOriginal" value="original">
+                    <label for="tipoOriginal">Original</label>
                     <br>
                 </div>
             </div>
@@ -81,51 +107,51 @@ if(isset($_POST["Voltar"])){
             <div id="ContainerQuantidade">
                 <div class="">
                     <p>Caixas:</p>
-                    <input type="text" name="QuantidadeCaixas" class="Quantidade">
+                    <input type="text" name="caixas" class="Quantidade">   
                     <br>
                 </div>
                 <div class="">
                     <p>Comprimidos:</p>
-                    <input type="text" name="QuantidadeComprimidos" class="Quantidade">
+                    <input type="text" name="comprimidos" class="Quantidade">
                     <br>
                 </div>
             </div>
             <div class="SubContainer">
                 <p>Efeitos:</p>
-                <input type="text" name="Efeitos" id="Efeitos">
+                <input type="text" name="efeito" id="Efeitos">
                 <br>
             </div>
             <div class="SubContainer">
                 <p>FARMACEUTICA:</p>
-                <input type="text" name="Farmaceutica" id="Farmaceutica">
+                <input type="text" name="farmaceutica" id="Farmaceutica">
                 <br>
             </div>
             <div>
                 <p id="HoraMedicamento">HORÁRIO DO MEDICAMENTO :</p>
                 <div id="HoraRemedio">
-                    <input type="radio" name="Horario" id="4horas">
+                    <input type="radio" name="frequencia" id="4horas" value="A cada 4 horas">
                     <label for="4horas">A cada 4 horas</label>
                     
-                    <input type="radio" name="Horario" id="6horas">
+                    <input type="radio" name="frequencia" id="6horas" value="A cada 6 horas">
                     <label for="6horas">A cada 6 horas</label>
                     
-                    <input type="radio" name="Horario" id="8horas">
+                    <input type="radio" name="frequencia" id="8horas" value="A cada 8 horas">
                     <label for="8horas">A cada 8 horas</label>
                     
-                    <input type="radio" name="Horario" id="12horas">
+                    <input type="radio" name="frequencia" id="12horas" value="A cada 12 horas">
                     <label for="12horas">A cada 12 horas</label>
                     
-                    <input type="radio" name="Horario" id="Dia">
+                    <input type="radio" name="frequencia" id="Dia" value="A cada dia">
                     <label for="Dia">A cada Dia</label>
                 </div>
             </div>
             <div class="SubContainer">
                 <p>QUE HORAS PRETENDE COMEÇAR:</p>
-                <input type="time" name="HoraComeco" id="HoraComeco">
+                <input type="time" name="horario" id="HoraComeco">
                 <br>
             </div>
             <div>
-                <input type="submit" value="Cadastrar Medicamentos" id="BtnCadastro">
+                <input type="submit" name="cadMed" value="Cadastrar Medicamentos" id="BtnCadastro">
             </div>
         </form>
     </main>
@@ -155,9 +181,6 @@ if(isset($_POST["Voltar"])){
             </div>  
         </div>
     </footer>
-</body>
-
-</html>
 </body>
 
 </html>

@@ -345,3 +345,12 @@ footer {
     height: 40px;
     grid-area: Twitter;
 }
+
+.baba{
+  position: absolute;
+  top: 50%;
+  left: 37%;
+}
+.table-bg{
+   background-color: rgba(0, 0, 0, 0.5);
+}

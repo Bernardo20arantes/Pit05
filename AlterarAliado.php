@@ -1,8 +1,3 @@
-<?php
-if(isset($_POST["Voltar"])){
-    header("Location: menu.php");
-}
-?>
 <!DOCTYPE html>
 <html lang="pt-br">
 

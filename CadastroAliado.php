@@ -1,8 +1,11 @@
-<?php
-if(isset($_POST["Voltar"])){
-    header("Location: menu.php");
+<?php 
+if(isset($_POST['Voltar'])){
+    header('Location:menu.php');
+    
 }
+
 ?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
 
@@ -31,7 +34,7 @@ if(isset($_POST["Voltar"])){
             <input type="search" name="" id="BarraPesquisa">
             <img id="Lupa" src="IMG/LupaPesquisa.png">
         </div>
-        <form method="post">
+        <form method="post" action="CadastroAliado.php">
             <input type="submit" id="Voltar" name="Voltar" value="Voltar">
         </form>
     </header>

@@ -1,6 +1,7 @@
 <?php
-if(isset($_POST["AltRemedio"])){
-    header("Location: AlterarRemedio.php");
+//botões
+if(isset($_POST["meusMedicamentos"])){
+    header("Location: meusMedicamentos.php");
 }
 if(isset($_POST["CadRemedio"])){
     header("Location: CadastroRemedio.php");
@@ -14,11 +15,14 @@ if(isset($_POST["AltAliado"])){
 if(isset($_POST["Voltar"])){
     header("Location: home.php");
 }
+if(isset($_POST["meusDados"])){
+    header("Location: meusDados.php");
+}
 
-
+//mostrar o usuário logado
 session_start();
 include_once('PDO/pdo.php');
-//print_r($_SESSION);
+
 
 if((!isset($_SESSION['email']) == true) and (!isset($_SESSION['senha']) == true)){
 
@@ -34,40 +38,6 @@ $sql = "SELECT * FROM usuarios  WHERE email = '" . $logado . "' ORDER BY id DESC
 
 $result = $conexao->query($sql);
 
-//print_r($result);
-
-///////////////////////////////////////////////////////////
-//////////////////////////////////////////////////////////
-if(!empty($_GET['id'])){
-    include_once("config.php");
-
-    $id = $_GET['id'];
-
-    $sqlSelect = "SELECT * FROM usuarios WHERE id=$id";
-
-    $result = $conexao->query($sqlSelect);
-
-    if($result->num_rows > 0){
-
-        while($user_data = mysqli_fetch_assoc($result)){
-
-        $nome = $user_data['nome'];
-        $cpf = $user_data['cpf'];
-        $cep = $user_data['cep'];
-        $info = $user_data['info'];
-        $email = $user_data['email'];
-        $senha = $user_data['senha'];
-        $telefone = $user_data['telefone'];
-        $sexo = $user_data['sexo'];
-        $data_nasc = $user_data['data_nasc'];
-       
-        }
-    }
-    else{
-        header('Location: home.php');
-    }
-
-}
 
 ?>
 
@@ -109,14 +79,14 @@ if(!empty($_GET['id'])){
         <div id="Formulario">
             <form method="post" class="Form">
                 <h3>Remedio - Cadastrar</h3>
-                <input type="submit" value="Cadastrar">
+                <input type="submit" name="CadRemedio" value="Cadastrar">
             </form>
             <form method="post" class="Form">
                 <div>
                     <h3>Remedio - Alterar</h3>
                 </div>
                 <div>
-                    <input type="submit" value="Alterar">
+                    <input type="submit" name="meusMedicamentos" value="Alterar">
                     <input type="submit" value="Deletar">
                 </div>
             </form>
@@ -124,7 +94,7 @@ if(!empty($_GET['id'])){
         <div id="Formulario2">
             <form method="post" class="Form">
                 <h3>Aliado - Cadastrar</h3>
-                <input type="submit" value="Cadastrar">
+                <input type="submit" name="CadAliado" value="Cadastrar">
             </form>
             <form method="post" class="Form">
                 <div>
@@ -151,79 +121,17 @@ if(!empty($_GET['id'])){
                 </div>
             </form>
         </div>
-        <div id="FormEdit">
-            <h2>Editar Dados Pessoais</h2>
-            <div>
-                <form method="post" id="Form">
-                    <div class="SubContainer">
-                        <p>Nome Completo:</p>
-                        <input type="text" name="nome" id="Nome" value="<?php echo $nome?>">
-                        <p></p>
-                    </div>
-                    <div id="ParteInformacoes">
-
-                        <div id="InfoLabelCPF">
-                            <label>CPF:</label>
-                        </div>
-                        <div id="InfoLabelDTN">
-                            <label>Data de Nascimento:</label>
-                        </div>
-                        <div id="InfoLabelCell">
-                            <label>Telefone ou Celular</label>
-                        </div>
-                        <div id="InfoImgCell">
-                            <img src="IMG/Celular.png" id="ImgCell">
-                        </div>
-                        <div id="InfotxtCpf">
-                            <input type="text" name="CPF" id="Cpf" value="<?php echo $cpf?>" oninput="mascara_CPF()" maxlength="14">
-                            <p></p>
-                        </div>
-                        <div id="InfotxtDTN">
-                            <input type="date" name="data_nasc" id="Data" value="<?php echo $data_nasc?>">
-                            <p></p>
-                        </div>
-                        <div id="InfotxtCell">
-                            <input type="text" name="telefone" id="Cell" value="<?php echo $telefone?>" oninput="mascara_Cell()" maxlength="14">
-                            <p></p>
-                        </div>
-                    </div>
-                    <div class="SubContainer">
-                        <p>Cep:</p>
-                        <input type="text" name="" id="cep" value="<?php echo $cep?>" oninput="mascara_cep()" maxlength="9">
-                        <p></p>
-                    </div>
-                    <div>
-                        <p>Nos conte o que você tem: </p>
-                        <textarea name="info" id="info" value="<?php echo $info?>" cols="70" rows="2"
-                            style="resize: none; border-radius: 10px; width: 96%; margin-left: 2%;"></textarea>
-                    </div>
-                    <div>
-                        <p id="PerguntaPronome">Como podemos te chamar:</p>
-                        <div>
-                            <input type="radio" name="genero" id="ele" value="masculino" <?php echo ($sexo == 'masculino') ? 'checked' : '' ?>>
-                            <label for="ele">Ele</label>
-                            <input type="radio" name="genero" id="ela" value="feminino" <?php echo ($sexo == 'masculino') ? 'checked' : '' ?>>
-                            <label for="ela">Ela</label>
-                            <p></p>
-                        </div>
-                    </div>
-                    <div class="SubContainer">
-                        <p>E-mail:</p>
-                        <input type="text" name="email" id="Email" value="<?php echo $email?>">
-                        <p></p>
-                    </div>
-                    <div class="SubContainer">
-                        <p>Senha:</p>
-                        <input type="text" name="senha" id="senha" value="<?php echo $senha?>">
-                        <p></p>
-                    </div>
-                    <div>
-                        <input type="submit" value="Alterar" id="BtnCadastro">
-                        <input type="submit" value="Deletar" id="BtnCadastro">
-                    </div>
-                </form>
-            </div>
+        <div id="Formulario2">
+            <form method="post" class="Form">
+                <div>
+                    <h3>Meus Dados</h3>
+                </div>
+                <div>
+                    <input type="submit" name="meusDados" value="Alterar">
+                </div>
+            </form>
         </div>
+        
     </main>
     <footer>
         <div id="Links">
