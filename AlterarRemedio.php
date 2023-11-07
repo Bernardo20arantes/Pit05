@@ -14,9 +14,11 @@ if(!empty($_GET['id'])){
 
     $result = $conexao->query($sqlSelect);
 
+
     if($result->num_rows > 0){
 
         while($user_data = mysqli_fetch_assoc($result)){
+
 
         $apelido = $user_data['apelido'];
         $tipoMan = $user_data['tipoMan'];
@@ -38,6 +40,7 @@ if(!empty($_GET['id'])){
 }
 
 
+
 ?>
 
 
@@ -54,6 +57,8 @@ if(!empty($_GET['id'])){
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;300;700&display=swap" rel="stylesheet">
+
+    
 </head>
 
 <body>
@@ -85,9 +90,9 @@ if(!empty($_GET['id'])){
                 <br>
             </div>
             <div>
-                <input type="radio" name="tipoMan" id="man" value="manipulado" <?php echo ($tipoMan == 'MANIPULADO') ? 'checked' : '' ?>>
-                <label for="manipulado">Manipulado</label>
-                <input type="radio" name="tipoMan" id="n_manipulado" value="naoMan" <?php echo ($tipoMan == 'NÃO MANIPULADO') ? 'checked' : '' ?>>
+                <input type="radio" name="tipoMan" id="man" value="MANIPULADO"  <?php echo ($tipoMan == 'MANIPULADO') ? 'checked' : '' ?>>
+                <label for="man">Manipulado</label>
+                <input type="radio" name="tipoMan" id="n_manipulado" value="NAO MANIPULADP" <?php echo ($tipoMan == 'NAO MANIPULADO') ? 'checked' : '' ?>>
                 <label for="n_manipulado">Não manipulado</label>
                 <p></p>
             </div>
@@ -128,7 +133,7 @@ if(!empty($_GET['id'])){
             </div>
             <div class="SubContainer">
                 <p>Efeitos:</p>
-                <input type="text" name="efeito" id="Efeitos" value="<?php echo $efeito?>">
+                <input type="text" name="efeito" id="efeitos" value="<?php echo $efeito?>">
                 <br>
             </div>
             <div class="SubContainer">

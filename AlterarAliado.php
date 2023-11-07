@@ -1,3 +1,44 @@
+<?php 
+if(isset($_POST["Voltar"])){
+
+    header("Location: menu.php");
+
+}
+
+if(!empty($_GET['id'])){
+    include_once("PDO/pdo.php");
+
+    $id = $_GET['id'];
+
+    $sqlSelect = "SELECT * FROM aliados WHERE id=$id";
+
+    $result = $conexao->query($sqlSelect);
+
+
+    if($result->num_rows > 0){
+
+        while($user_data = mysqli_fetch_assoc($result)){
+
+
+        $nome = $user_data['nome'];
+        $cpf = $user_data['cpf'];
+        $data_nasc = $user_data['data_nasc'];
+        $telefone = $user_data['telefone'];
+        $cep = $user_data['cep'];
+        $relacao = $user_data['relacao'];
+        $sexo = $user_data['sexo'];
+        $email = $user_data['email'];
+        $senha = $user_data['senha'];
+        }
+    }
+    else{
+        header('Location: meusAliados.php');
+    }
+
+}
+
+?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
 
@@ -32,14 +73,14 @@
     </header>
 
     <main>
-        <form method="post" id="Form">
+        <form method="post" action="saveAlteracaoAliado.php" id="Form">
             <div>
                 <img src="IMG/Perfil_Usuario.png" id="ImgAvatar">
                 <h2 id="Acessar">Alterar Dados ALIADO</h2>
             </div>
             <div class="SubContainer">
                 <p>Nome Completo:</p>
-                <input type="text" name="" id="Nome">
+                <input type="text" name="nome" id="Nome" value="<?php echo $nome ?>">
                 <p></p>
             </div>
             <div id="ParteInformacoes">
@@ -57,29 +98,29 @@
                     <img src="IMG/Celular.png" id="ImgCell">
                 </div>
                 <div id="InfotxtCpf">
-                    <input type="text" name="CPF" id="Cpf" oninput="mascara_CPF()" maxlength="14">
+                    <input type="text" name="cpf" id="Cpf" value="<?php echo $cpf ?>" oninput="mascara_CPF()" maxlength="14">
                     <p></p>
                 </div>
                 <div id="InfotxtDTN">
-                    <input type="date" name="Data" id="Data">
+                    <input type="date" name="data_nasc" id="Data" value="<?php echo $data_nasc ?>">
                     <p></p>
                 </div>
                 <div id="InfotxtCell">
-                    <input type="text" name="Celular" id="Cell" oninput="mascara_Cell()" maxlength="14">
+                    <input type="text" name="telefone" id="Cell" value="<?php echo $telefone ?>" oninput="mascara_Cell()" maxlength="14">
                     <p></p>
                 </div>
             </div>
             <div class="SubContainer">
                 <p>Cep:</p>
-                <input type="text" name="" id="cep" oninput="mascara_cep()" maxlength="9">
+                <input type="text" name="cep" id="cep" value="<?php echo $cep ?>" oninput="mascara_cep()" maxlength="9">
                 <p></p>
             </div>
             <div>
                 <p id="PerguntaTipoRelacao">Qual sua relação com o Usuário</p>
                 <div>
-                  <input type="radio" name="relacao" id="responsavel">
+                  <input type="radio" name="relacao" id="responsavel" value="Responsável" <?php echo ($relacao == 'Responsável') ? 'checked' : '' ?>>
                   <label for="responsavel">Responsável</label>
-                  <input type="radio" name="relacao" id="n_responsavel">
+                  <input type="radio" name="relacao" id="n_responsavel" value="Não Responsável" <?php echo ($relacao == 'Não Responsável') ? 'checked' : '' ?>>
                   <label for="n_responsavel">Não Responsável</label>
                   <p></p>
                 </div>
@@ -88,9 +129,9 @@
               <div>
                 <p id="PerguntaPronome">Como podemos te chamar:</p>
                 <div>
-                  <input type="radio" name="pronome" id="ele">
+                  <input type="radio" name="sexo" id="ele" value="masculino" <?php echo ($sexo == 'masculino') ? 'checked' : '' ?>>
                   <label for="ele">Ele</label>
-                  <input type="radio" name="pronome" id="ela">
+                  <input type="radio" name="sexo" id="ela" value="feminino" <?php echo ($sexo == 'feminino') ? 'checked' : '' ?>>
                   <label for="ela">Ela</label>
                   <p></p>
                 </div>
@@ -98,17 +139,18 @@
               
             <div class="SubContainer">
                 <p>E-mail:</p>
-                <input type="text" name="" id="Email">
+                <input type="text" name="email" id="Email" value="<?php echo $email ?>" >
                 <p></p>
             </div>
             <div class="SubContainer">
                 <p>Senha:</p>
-                <input type="text" name="" id="">
+                <input type="text" name="senha" id="" value="<?php echo $senha ?>" >
                 <p></p>
             </div>
+            <input type="hidden" name="id" value="<?php echo $id?>">
+
             <div>
-                <input type="submit" value="Salvar Aliado" id="BtnCadastro">
-                <input type="submit" value="Deletar Aliado" id="BtnCadastro">
+                <input type="submit" name="updateAliado" value="Salvar Aliado" id="BtnCadastro">
             </div>
         </form>
     </main>

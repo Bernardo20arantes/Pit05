@@ -21,7 +21,8 @@ if(isset($_POST['cadMed'])){
     $frequencia = $_POST['frequencia'];
     $horario = $_POST['horario'];
 
-    $result = mysqli_query($conexao, "INSERT INTO medicamentos(id_usuario, apelido, tipoMan, dosagem, tipoGen, nome, caixas, comprimidos, efeito, farmaceutica, frequencia, horario) VALUES('$id_usuario','$apelido', '$tipoMan', '$dosagem', '$tipoGen', '$nomeMedicamento', '$caixas', '$comprimidos', '$efeitos', '$farmaceutica', '$frequencia', '$horario')");
+    $result = mysqli_query($conexao, "INSERT INTO medicamentos(id_usuario, apelido, tipoMan, dosagem, tipoGen, nome, caixas, comprimidos, efeito, farmaceutica, frequencia, horario)
+     VALUES('$id_usuario','$apelido', '$tipoMan', '$dosagem', '$tipoGen', '$nomeMedicamento', '$caixas', '$comprimidos', '$efeitos', '$farmaceutica', '$frequencia', '$horario')");
 }
 ?>
 <!DOCTYPE html>
@@ -75,9 +76,9 @@ if(isset($_POST['cadMed'])){
             <div>
             <p style="text-align: center;font-size: 20px; margin-bottom: 10px;">
             O Remédio é Manipulado ou não?</p>
-                <input type="radio" name="tipoMan" id="manipulado" value="manipulado">
+                <input type="radio" name="tipoMan" id="manipulado" value="MANIPULADO">
                 <label for="manipulado">Manipulado</label>
-                <input type="radio" name="tipoMan" id="n_manipulado" value="naoManipulado">
+                <input type="radio" name="tipoMan" id="n_manipulado" value="NAO MANIPULADO">
                 <label for="n_manipulado">Não manipulado</label>
                 <p></p>
             </div>
@@ -118,7 +119,7 @@ if(isset($_POST['cadMed'])){
             </div>
             <div class="SubContainer">
                 <p>Efeitos:</p>
-                <input type="text" name="efeito" id="Efeitos">
+                <input type="text" name="efeito" id="efeitos">
                 <br>
             </div>
             <div class="SubContainer">

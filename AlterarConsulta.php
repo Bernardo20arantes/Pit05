@@ -4,22 +4,33 @@ if(isset($_POST["Voltar"])){
     header('Location: menu.php');
 }
 
-include_once("PDO/pdo.php");
+if(!empty($_GET['id'])){
+    include_once("PDO/pdo.php");
 
-if(isset($_POST['cadastrarConsulta'])){
-    
-    $id_usuario = $_POST['idUsuario'];
-    $medico = $_POST['medico'];
-    $motivo = $_POST['motivo'];
-    $data_cons = $_POST['data_cons'];
-    $email = $_POST['email'];
-    $clinica = $_POST['clinica'];
-    $endereco = $_POST['endereco'];
-    
+    $id = $_GET['id'];
 
-    $result = mysqli_query($conexao, "INSERT INTO consultas(id_usuario, medico, motivo, data_cons, email, clinica, endereco) VALUES ('$id_usuario', '$medico', '$motivo', '$data_cons', '$email', '$clinica', '$endereco')");
+    $sqlSelect = "SELECT * FROM consultas WHERE id=$id";
 
-   
+    $result = $conexao->query($sqlSelect);
+
+
+    if($result->num_rows > 0){
+
+        while($user_data = mysqli_fetch_assoc($result)){
+
+
+        $medico = $user_data['medico'];
+        $motivo = $user_data['motivo'];
+        $data_cons = $user_data['data_cons'];
+        $email = $user_data['email'];
+        $clinica = $user_data['clinica'];
+        $endereco = $user_data['endereco'];
+        
+        }
+    }
+    else{
+        header('Location: meusAliados.php');
+    }
 
 }
 
@@ -57,40 +68,38 @@ if(isset($_POST['cadastrarConsulta'])){
         </form>
     </header>
     <main>
-        <form action="CadastroConsulta.php" method="post" id="Form">
+        <form   method="post" action="saveAtualizarConsulta.php" id="Form">
             <div>
                 <h1>Cadastrar Consulta</h1>
             </div>
             <div class="SubContainer">
-                <p>Código do Usuário:</p>
-                <input type="number" name="idUsuario">
-            </div>
-            <div class="SubContainer">
                 <p>Nome do Medico:</p>
-                <input type="text" name="medico">
+                <input type="text" name="medico" value="<?php echo $medico?>">
             </div>
             <div class="SubContainer">
                 <p>Motivo:</p>
-                <input type="text" name="motivo">
+                <input type="text" name="motivo" value="<?php echo $motivo?>">
             </div>
             <div class="SubContainer">
                 <p>Data da Consulta:</p>
-                <input type="date" name="data_cons" id="InputData">
+                <input type="date" name="data_cons" id="InputData" value="<?php echo $data_cons?>">
             </div>
             <div class="SubContainer">
                 <p>Email:</p>
-                <input type="text" name="email">
+                <input type="text" name="email" value="<?php echo $email?>">
             </div>
             <div class="SubContainer">
                 <p>Clínica:</p>
-                <input type="text" name="clinica">
+                <input type="text" name="clinica" value="<?php echo $clinica?>">
             </div>
             <div class="SubContainer">
                 <p>Endereço:</p>
-                <input type="text" name="endereco">
+                <input type="text" name="endereco" value="<?php echo $clinica?>">
             </div>
+            <input type="hidden" name="id" value="<?php echo $id?>">
+
             <div>
-                <input type="submit" name="cadastrarConsulta" value="Salvar Consulta" id="Cadastrar">
+                <input type="submit" name="updateConsulta" value="Editar Consulta" id="Cadastrar">
             </div>
         </form>
     </main>

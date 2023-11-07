@@ -4,6 +4,29 @@ if(isset($_POST['Voltar'])){
     
 }
 
+include_once("PDO/pdo.php");
+
+if(isset($_POST['cadastrarAliado'])){
+    
+    $id_usuario = $_POST['idUsuario'];
+    $nome = $_POST['nome'];
+    $cpf = $_POST['cpf'];
+    $data_nasc = $_POST['data_nasc'];
+    $telefone = $_POST['telefone'];
+    $cep = $_POST['cep'];
+    $email = $_POST['email'];
+    $senha = $_POST['senha'];
+    $sexo = $_POST['sexo'];
+    $relacao = $_POST['relacao'];
+
+
+
+    $result = mysqli_query($conexao, "INSERT INTO aliados(id_usuario, nome, cpf, data_nasc, telefone, cep, email, senha, sexo, relacao )
+     VALUES('$id_usuario','$nome', '$cpf', '$data_nasc', '$telefone', '$cep', '$email', '$senha', '$sexo', '$relacao')");
+    
+
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -40,14 +63,19 @@ if(isset($_POST['Voltar'])){
     </header>
 
     <main>
-        <form method="post" id="Form">
+        <form method="post" action="CadastroAliado.php" id="Form">
             <div>
                 <img src="IMG/Perfil_Usuario.png" id="ImgAvatar">
                 <h2 id="Acessar">CADASTRAR ALIADO</h2>
             </div>
             <div class="SubContainer">
+                <p>ID do usuário:</p>
+                <input type="text" name="idUsuario" id="Nome">
+                <p></p>
+            </div>
+            <div class="SubContainer">
                 <p>Nome Completo:</p>
-                <input type="text" name="" id="Nome">
+                <input type="text" name="nome" id="Nome">
                 <p></p>
             </div>
             <div id="ParteInformacoes">
@@ -65,29 +93,29 @@ if(isset($_POST['Voltar'])){
                     <img src="IMG/Celular.png" id="ImgCell">
                 </div>
                 <div id="InfotxtCpf">
-                    <input type="text" name="CPF" id="Cpf" oninput="mascara_CPF()" maxlength="14">
+                    <input type="text" name="cpf" id="Cpf" oninput="mascara_CPF()" maxlength="14">
                     <p></p>
                 </div>
                 <div id="InfotxtDTN">
-                    <input type="date" name="Data" id="Data">
+                    <input type="date" name="data_nasc" id="Data">
                     <p></p>
                 </div>
                 <div id="InfotxtCell">
-                    <input type="text" name="Celular" id="Cell" oninput="mascara_Cell()" maxlength="14">
+                    <input type="text" name="telefone" id="Cell" oninput="mascara_Cell()" maxlength="14">
                     <p></p>
                 </div>
             </div>
             <div class="SubContainer">
                 <p>Cep:</p>
-                <input type="text" name="" id="cep" oninput="mascara_cep()" maxlength="9">
+                <input type="text" name="cep" id="cep" oninput="mascara_cep()" maxlength="9">
                 <p></p>
             </div>
             <div>
                 <p id="PerguntaTipoRelacao">Qual sua relação com o Usuário</p>
                 <div>
-                    <input type="radio" name="relacao" id="responsavel">
+                    <input type="radio" name="relacao" id="responsavel" value="Responsável">
                     <label for="responsavel">Responsável</label>
-                    <input type="radio" name="relacao" id="n_responsavel">
+                    <input type="radio" name="relacao" id="n_responsavel" value="Não Responsável">
                     <label for="n_responsavel">Não Responsável</label>
                     <p></p>
                 </div>
@@ -96,9 +124,9 @@ if(isset($_POST['Voltar'])){
             <div>
                 <p id="PerguntaPronome">Como podemos te chamar:</p>
                 <div>
-                    <input type="radio" name="pronome" id="ele">
+                    <input type="radio" name="sexo" id="ele" value="masculino">
                     <label for="ele">Ele</label>
-                    <input type="radio" name="pronome" id="ela">
+                    <input type="radio" name="sexo" id="ela" value="feminino">
                     <label for="ela">Ela</label>
                     <p></p>
                 </div>
@@ -106,16 +134,16 @@ if(isset($_POST['Voltar'])){
 
             <div class="SubContainer">
                 <p>E-mail:</p>
-                <input type="text" name="" id="Email">
+                <input type="text" name="email" id="Email">
                 <p></p>
             </div>
             <div class="SubContainer">
                 <p>Senha:</p>
-                <input type="text" name="" id="">
+                <input type="password" name="senha" id="pas">
                 <p></p>
             </div>
             <div>
-                <input type="submit" value="Cadastrar Aliado" id="BtnCadastro">
+                <input type="submit" name="cadastrarAliado" value="Cadastrar Aliado" id="BtnCadastro">
             </div>
         </form>
     </main>

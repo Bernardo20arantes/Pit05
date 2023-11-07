@@ -2,6 +2,9 @@
 if(isset($_POST['Menu'])){
     header('Location:menu.php');
 }
+if(isset($_POST['Sair'])){
+    header('Location:saida.php');
+}
 ?>
 
 <!DOCTYPE html>
@@ -32,7 +35,8 @@ if(isset($_POST['Menu'])){
             <img id="Lupa" src="IMG/LupaPesquisa.png">
         </div>
         <form method="post">
-            <input type="submit" name="Menu" value="Menu" id="Menu">
+            <input type="submit" name="Menu" value="Menu" id="Menu"><p> </p>
+            
         </form>
     </header>
 

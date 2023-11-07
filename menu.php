@@ -9,8 +9,14 @@ if(isset($_POST["CadRemedio"])){
 if(isset($_POST["CadAliado"])){
     header("Location: CadastroAliado.php");
 }
-if(isset($_POST["AltAliado"])){
-    header("Location: AlterarAliado.php");
+if(isset($_POST["meusAliados"])){
+    header("Location: meusAliados.php");
+}
+if(isset($_POST["CadConsulta"])){
+    header("Location: CadastroConsulta.php");
+}
+if(isset($_POST["minhasConsultas"])){
+    header("Location: minhasConsultas.php");
 }
 if(isset($_POST["Voltar"])){
     header("Location: home.php");
@@ -87,7 +93,6 @@ $result = $conexao->query($sql);
                 </div>
                 <div>
                     <input type="submit" name="meusMedicamentos" value="Alterar">
-                    <input type="submit" value="Deletar">
                 </div>
             </form>
         </div>
@@ -101,23 +106,21 @@ $result = $conexao->query($sql);
                     <h3>Aliado- Alterar</h3>
                 </div>
                 <div>
-                    <input type="submit" value="Alterar">
-                    <input type="submit" value="Deletar">
+                    <input type="submit" name="meusAliados" value="Alterar">
                 </div>
             </form>
         </div>
         <div id="Formulario2">
             <form method="post" class="Form">
                 <h3>Consultas - Cadastrar</h3>
-                <input type="submit" value="Cadastrar">
+                <input type="submit" name="CadConsulta" value="Cadastrar">
             </form>
             <form method="post" class="Form">
                 <div>
                     <h3>Consultas- Alterar</h3>
                 </div>
                 <div>
-                    <input type="submit" value="Alterar">
-                    <input type="submit" value="Deletar">
+                    <input type="submit" name="minhasConsultas" value="Alterar">
                 </div>
             </form>
         </div>
