@@ -1,6 +1,5 @@
 <?php 
 if(isset($_POST['Voltar'])){
-    
     header('Location:index.html');
 }
 
@@ -63,11 +62,11 @@ if(isset($_POST['Cadastrar'])){
             <div id="Entrar">
                 <input type="submit" name="entrar" value="Entrar" id="BtnEntrar">
             </div>
-            <div id="Cad_Rec">
+            <!--<div id="Cad_Rec">
                 <input type="submit" name="Cadastrar" value="Cadastrar" class="subImput">
                 <h4>ou</h4>
                 <input type="submit" name="Recuperar" value="Esqueci a senha" class="subImput">
-            </div>
+            </div>-->
         </form>
     </main>
     <footer>

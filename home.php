@@ -35,8 +35,8 @@ if(isset($_POST['Sair'])){
             <img id="Lupa" src="IMG/LupaPesquisa.png">
         </div>
         <form method="post">
-            <input type="submit" name="Menu" value="Menu" id="Menu"><p> </p>
-            
+            <input type="submit" name="Menu" value="Menu" id="Menu">
+            <input type="submit" name="Sair" value="Sair" id="Menu" style="margin-left: 10%;">    
         </form>
     </header>
 
